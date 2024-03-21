@@ -100,10 +100,6 @@ kaniko_cmd="/kaniko/executor ${ARGS} --reproducible --force"
 echo "Running kaniko command ${kaniko_cmd}"
 eval "${kaniko_cmd}"
 
-echo "image=$IMAGE" >> "$GITHUB_OUTPUT"
-echo "digest=$(cat /kaniko/digest)" >> "$GITHUB_OUTPUT"
-echo "image-tag-digest=$(cat /kaniko/image-tag-digest)" >> "$GITHUB_OUTPUT"
-
 
 if [ -n "$INPUT_SKIP_UNCHANGED_DIGEST" ]; then
     export DIGEST="$(cat /kaniko/digest)"
